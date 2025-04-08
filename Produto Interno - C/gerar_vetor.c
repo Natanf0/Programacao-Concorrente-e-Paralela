@@ -37,10 +37,10 @@ int main(int argc, char*argv[]) {
    //preenche os vetores com valores float aleatórios
    srand(time(NULL));
    for(long int i=0; i<n; i++) {
-        valorGeradoA = (rand() % MAX)/2.0 * fator;
+        valorGeradoA = (rand() % MAX)/3.0 * fator;
         vetorA[i] = valorGeradoA;
         fator*=-1;
-        valorGeradoB = (rand() % MAX)/2.0 * fator;
+        valorGeradoB = (rand() % MAX)/3.0 * fator;
         vetorB[i] = valorGeradoB;
         
    }
@@ -53,12 +53,13 @@ int main(int argc, char*argv[]) {
 
    //imprimir na saida padrao o vetor gerado
    #ifdef TEXTO
-   fprintf(stdout, "%ld\n", n);
+   fprintf(stdout, "N = %ld\n", n);
+   printf("Vetores A e B:\n");
    for(long int i=0; i<n; i++) {
-      fprintf(stdout, "%f ",vetor[i]);
+      fprintf(stdout, "%f  %f\n",vetorA[i], vetorB[i]);
    }
    fprintf(stdout, "\n");
-   fprintf(stdout, "%lf\n", soma);
+   fprintf(stdout, "Produto interno = %lf\n", produtoInterno);
    #endif
 
    //escreve o vetor no arquivo

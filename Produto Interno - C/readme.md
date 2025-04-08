@@ -3,6 +3,8 @@ Autor: Natan da S. Ferreira | Programação Concorente 2025.1 | UFRJ
 Descrição:  ̃Sejam (a1, a2, . . . , aN )T e (b1, b2, . . . , bN )T vetores em um espaco de dimensão N expressos em termos de um sistema ortogonal de coordenadas cartesianas. 
 O produto interno desses dois vetores e um valor real dado pela equação: a1*b1 + a2*b2 + . . . + aN*bN
 
+Observação: Para os itens 2 e 5, acesse o link: https://docs.google.com/document/d/1LmogXJpzdneCenKPnTl6YlXpDl_UavgPQSf5YUkUW6Y/edit?usp=sharing 
+
 Nesta atividade vamos calcular o produto interno de 2 formas:
 1. Sequencial.
 2. Concorrente.
