@@ -33,10 +33,15 @@ void* contaPrimos(void* arg){
         pthread_mutex_lock(&mutex1);
         copy_contador = contador; 
         contador += 1;
+        if(contador >= N) {
+            pthread_mutex_unlock(&mutex1);
+            break;
+        }
         pthread_mutex_unlock(&mutex1);
 
         if(ehPrimo(copy_contador)) primos += 1;
-    }while(copy_contador <= N);
+    }while(1);
+    //printf("copy = %lld\n", copy_contador);
     pthread_mutex_lock(&mutex2);
     qtd_primos += primos;
     pthread_mutex_unlock(&mutex2);
