@@ -1,8 +1,9 @@
-
 #include <stdio.h>
 #include <stdlib.h> 
 #include <pthread.h>
 #include <math.h>
+#include "timer.h"
+
 
 long long int N;
 long long int qtd_primos = 0, contador = 0 ;
@@ -10,7 +11,6 @@ int n_threads;
 
 pthread_mutex_t mutex1;
 pthread_mutex_t mutex2;
-pthread_mutex_t mutex3;
 
 int ehPrimo(long long int n) {
     int i;
@@ -22,7 +22,6 @@ int ehPrimo(long long int n) {
     }
     return 1;
 }
-
 
 void* contaPrimos(void* arg){
     long int id = (long int) arg;
@@ -48,17 +47,16 @@ void* contaPrimos(void* arg){
 
 
 int main(int argc, char *argv[]){
-    // N = atoll(argv[1]);
-    // while(contador<=N){
-    //     qtd_primos += ehPrimo(contador);
-    //     contador += 1 ;
-    // }
-    // printf("qtd primos = %lld", qtd_primos);
+    double inicio, fim, delta;
+
+
 
     pthread_t *tid; //identificadores das threads no sistema
     int nthreads; //qtde de threads (passada linha de comando)
 
    //--le e avalia os parametros de entrada
+
+    GET_TIME(inicio);
     if(argc<3) {
         printf("Digite: %s <N> <numero de threads>\n", argv[0]);
         return 1;
@@ -73,7 +71,6 @@ int main(int argc, char *argv[]){
     }
     pthread_mutex_init(&mutex1, NULL);
     pthread_mutex_init(&mutex2, NULL);
-    pthread_mutex_init(&mutex3, NULL);
 
     for(long int t=0; t<nthreads; t++) {
         if (pthread_create(&tid[t], NULL, contaPrimos, (void *)t)) {
@@ -87,12 +84,12 @@ int main(int argc, char *argv[]){
             printf("--ERRO: pthread_join() \n"); exit(-1); 
         } 
       } 
-
+    GET_TIME(fim);
+    delta = fim - inicio;
+    printf("%d, %lld, %lf, ", nthreads, N, delta); // tempo de execução
     pthread_mutex_destroy(&mutex1);
     pthread_mutex_destroy(&mutex2);
-    pthread_mutex_destroy(&mutex3);
-    printf("qtd primos = %lld\n\n", qtd_primos); 
-    printf(" diff = %d\n", abs(qtd_primos - 1229));
-
+    printf("qtd primos = %lld\n", qtd_primos); 
+    free(tid);
     return 0;
 }

@@ -1,0 +1,22 @@
+#!/bin/bash
+gcc -o main main.c -lm
+
+threads=(1 2 3 5 10 20)
+repeticoes=(1 2 3 4 5)
+N=(1000 10000 100000 1000000 10000000)
+
+# Loop sobre os números de threads
+echo "Nº de Threads, N, Tempo de Execução"
+echo ""
+
+for r in ${repeticoes[@]}; do
+    echo "$r º repetição"
+    echo ""
+    for n in ${N[@]}; do
+        for t in ${threads[@]}; do
+            ./main $n $t
+        done
+        echo ""
+    done
+    echo ""
+done
