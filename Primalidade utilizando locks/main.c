@@ -1,3 +1,5 @@
+// Autor: Natan Ferreira | 2025.1
+
 #include <stdio.h>
 #include <stdlib.h> 
 #include <pthread.h>
@@ -41,7 +43,6 @@ void* contaPrimos(void* arg){
 
         if(ehPrimo(copy_contador)) primos += 1;
     }while(1);
-    //printf("copy = %lld\n", copy_contador);
     pthread_mutex_lock(&mutex2);
     qtd_primos += primos;
     pthread_mutex_unlock(&mutex2);
@@ -54,12 +55,9 @@ void* contaPrimos(void* arg){
 int main(int argc, char *argv[]){
     double inicio, fim, delta;
 
-
-
     pthread_t *tid; //identificadores das threads no sistema
     int nthreads; //qtde de threads (passada linha de comando)
 
-   //--le e avalia os parametros de entrada
 
     GET_TIME(inicio);
     if(argc<3) {
