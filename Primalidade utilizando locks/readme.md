@@ -1,7 +1,9 @@
 Autor: Natan Ferreira | 2025.1
 
 Talvez você queira aproveitar o arquivo saida.csv que já possui dados para N = 1000 até N = 100000000
-Neste caso, apenas execute python3 main.py no terminal aberto na raiz do deste trabalho
+Neste caso, apenas execute python3 main.py no terminal aberto na raiz do deste trabalho.
+Cabeçalho do arquivo saida.csv: Número de threads, N, tempo de execução , quantidade de primos.
+Este último é para verificar a corretude do programa
 
 1. main.c
     Progrma concorrente que computa quantos primos existem até um inteiro N, utilizando t threads
