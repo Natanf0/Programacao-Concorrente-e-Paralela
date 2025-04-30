@@ -6,7 +6,6 @@
 #include <math.h>
 #include "timer.h"
 
-
 long long int N;
 long long int qtd_primos = 0, contador = 0 ;
 int n_threads;

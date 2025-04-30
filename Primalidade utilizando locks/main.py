@@ -1,6 +1,6 @@
+#Autor: Natan Ferreira | 2025.1
 import csv
 from collections import defaultdict
-
 
 dados = []
 
